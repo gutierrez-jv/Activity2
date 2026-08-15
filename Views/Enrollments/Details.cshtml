@@ -1,0 +1,19 @@
+﻿@model Activity2.ViewModels.EnrollmentDetailsViewModel
+@{
+    ViewData["Title"] = "Enrollment Details";
+}
+<h1>Enrollment Details</h1>
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Student</dt>
+        <dd class="col-sm-9">@Model.StudentName</dd>
+
+        <dt class="col-sm-3">Course</dt>
+        <dd class="col-sm-9">@Model.CourseName</dd>
+
+        <dt class="col-sm-3">Enrollment Date</dt>
+        <dd class="col-sm-9">@Model.EnrollmentDate</dd>
+    </dl>
+</div>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
+<a asp-action="Index" class="btn btn-primary">Back to List</a>
