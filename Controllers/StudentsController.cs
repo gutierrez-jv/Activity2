@@ -74,8 +74,16 @@ namespace Activity2.Controllers
                 DateOfBirth = viewModel.DateOfBirth
             };
 
-            _studentService.AddStudent(student);
-            return RedirectToAction("Index");
+            try
+            {
+                _studentService.AddStudent(student);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(viewModel);
+            }
         }
 
         public IActionResult Edit(int id)
@@ -117,8 +125,16 @@ namespace Activity2.Controllers
                 DateOfBirth = viewModel.DateOfBirth
             };
 
-            _studentService.UpdateStudent(student);
-            return RedirectToAction("Index");
+            try
+            {
+                _studentService.UpdateStudent(student);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(viewModel);
+            }
         }
 
         public IActionResult Delete(int id)
@@ -144,8 +160,16 @@ namespace Activity2.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            _studentService.DeleteStudent(id);
-            return RedirectToAction("Index");
+            try
+            {
+                _studentService.DeleteStudent(id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View("Delete", _studentService.GetById(id));
+            }
         }
     }
 }
