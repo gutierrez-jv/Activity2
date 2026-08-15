@@ -104,7 +104,8 @@ namespace Activity2.Services
             if (currentUnits + course.Units > 24)
                 throw new Exception($"Updating this enrollment would exceed the 24-unit limit (current: {currentUnits}, course: {course.Units}).");
 
-            if (DateTime.TryParse(enrollment.EnrollmentDate, out var enrollmentDate)){
+            if (DateTime.TryParse(enrollment.EnrollmentDate, out var enrollmentDate))
+            {
                 if (enrollmentDate.Date > DateTime.Today)
                     throw new Exception("Enrollment date cannot be in the future.");
             }
