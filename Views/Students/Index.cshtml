@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Activity2.ViewModels.StudentViewModel>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Student</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student Number</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentNumber</td>
+                <td>@student.FullName</td>
+                <td>@student.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@student.Id" class="btn btn-sm btn-secondary">Details</a>
+                    <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
